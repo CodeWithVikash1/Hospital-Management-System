@@ -1,0 +1,190 @@
+{% extends 'navigation.html' %}
+{% load static %}
+
+{% block title %}Doctor Signup - NovaCure Hospital{% endblock %}
+
+
+{% block body %}
+<div class="page-header-box">
+  <h2 class="page-header-text">
+    Create an Account Doctor
+  </h2>
+</div>
+<div class="d-flex justify-content-center align-items-center" style="min-height: 30vh;">
+    <div class="p-4 shadow" style= "border-radius: 15px; background-color: #f7f9fb; width: 100%; max-width: 800px; ">
+    <form method="post" onsubmit="return checkpass();" name="patient_signup">
+        {% csrf_token %}
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label><b>First Name</b></label>
+            <input type="text" name="fname" class="form-control" placeholder="Enter first name" required>
+        </div>
+        <div class="form-group col-md-6">
+            <label><b>Last Name</b></label>
+            <input type="text" name="lname" class="form-control" placeholder="Enter last name" required>
+        </div>
+    </div>
+  
+    <div class="form-row">
+        <div class="form-group col-md-12">
+            <label><b>Contact Number</b></label>
+            <input type="text" name="contact" class="form-control" placeholder="Enter contact number" required>
+        </div>
+    </div>
+      <div class="form-row">
+        <div class="form-group col-md-12">
+            <label><b>Email Address</b></label>
+            <input type="Email" name="email" class="form-control" placeholder="Enter email address" required>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label><b>Create Password</b></label>
+            <input type="password" name="password1" class="form-control" placeholder="Create Password" required>
+        </div>
+        <div class="form-group col-md-6">
+            <label><b>Confirm Password</b></label>
+            <input type="password" name="password2" class="form-control" placeholder="Confirm Password" required>
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="form-group col-md-12">
+            <label><b>Gender</b></label>
+        <select name="gender" class="form-control" required>
+            <option value="" disabled selected>Select Gender</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Other">Other</option>
+        </select>
+        </div>
+    </div>
+
+        <div class="form-row">
+        <div class="form-group col-md-12">
+            <label><b>Specialization</b></label>
+        <select name="specialization" class="form-control" required>
+            <option value="" disabled selected>Select Specialization</option>
+            <option value="Allergist">Allergist</option>
+            <option value="Anesthesiologist">Anesthesiologist</option>
+            <option value="Audiologist">Audiologist</option>
+            <option value="Cardiologist">Cardiologist</option>
+            <option value="Cardiothoracic Surgeon">Cardiothoracic Surgeon</option>
+            <option value="Chiropractor">Chiropractor</option>
+            <option value="Colorectal Surgeon">Colorectal Surgeon</option>
+            <option value="Dentist">Dentist</option>
+            <option value="Dermatologist">Dermatologist</option>
+            <option value="Diabetologist">Diabetologist</option>
+            <option value="Emergency Medicine Specialist">Emergency Medicine Specialist</option>
+            <option value="Endocrinologist">Endocrinologist</option>
+            <option value="ENT Specialist">ENT Specialist</option>
+            <option value="Epidemiologist">Epidemiologist</option>
+            <option value="Family Medicine Physician">Family Medicine Physician</option>
+            <option value="Gastroenterologist">Gastroenterologist</option>
+            <option value="General Physician">General Physician</option>
+            <option value="General Surgeon">General Surgeon</option>
+            <option value="Geneticist">Geneticist</option>
+            <option value="Geriatrician">Geriatrician</option>
+            <option value="Gynecologist">Gynecologist</option>
+            <option value="Hematologist">Hematologist</option>
+            <option value="Hepatologist">Hepatologist</option>
+            <option value="Homeopathic Doctor">Homeopathic Doctor</option>
+            <option value="Immunologist">Immunologist</option>
+            <option value="Infectious Disease Specialist">Infectious Disease Specialist</option>
+            <option value="Internal Medicine Specialist">Internal Medicine Specialist</option>
+            <option value="Interventional Radiologist">Interventional Radiologist</option>
+            <option value="Laparoscopic Surgeon">Laparoscopic Surgeon</option>
+            <option value="Medical Geneticist">Medical Geneticist</option>
+            <option value="Microbiologist">Microbiologist</option>
+            <option value="Neonatologist">Neonatologist</option>
+            <option value="Nephrologist">Nephrologist</option>
+            <option value="Neurologist">Neurologist</option>
+            <option value="Neurosurgeon">Neurosurgeon</option>
+            <option value="Nuclear Medicine Specialist">Nuclear Medicine Specialist</option>
+            <option value="Nutritionist">Nutritionist</option>
+            <option value="Obstetrician">Obstetrician</option>
+            <option value="Occupational Therapist">Occupational Therapist</option>
+            <option value="Oncologist">Oncologist</option>
+            <option value="Ophthalmologist">Ophthalmologist</option>
+            <option value="Optometrist">Optometrist</option>
+            <option value="Orthopedic Surgeon">Orthopedic Surgeon</option>
+            <option value="Otolaryngologist">Otolaryngologist</option>
+            <option value="Pain Management Specialist">Pain Management Specialist</option>
+            <option value="Pathologist">Pathologist</option>
+            <option value="Pediatrician">Pediatrician</option>
+            <option value="Periodontist">Periodontist</option>
+            <option value="Pharmacologist">Pharmacologist</option>
+            <option value="Plastic Surgeon">Plastic Surgeon</option>
+            <option value="Podiatrist">Podiatrist</option>
+            <option value="Preventive Medicine Specialist">Preventive Medicine Specialist</option>
+            <option value="Proctologist">Proctologist</option>
+            <option value="Psychiatrist">Psychiatrist</option>
+            <option value="Psychologist">Psychologist</option>
+            <option value="Pulmonologist">Pulmonologist</option>
+            <option value="Radiation Oncologist">Radiation Oncologist</option>
+            <option value="Radiologist">Radiologist</option>
+            <option value="Reproductive Endocrinologist">Reproductive Endocrinologist</option>
+            <option value="Rheumatologist">Rheumatologist</option>
+            <option value="Sleep Medicine Specialist">Sleep Medicine Specialist</option>
+            <option value="Sports Medicine Specialist">Sports Medicine Specialist</option>
+            <option value="Surgeon">Surgeon</option>
+            <option value="Thoracic Surgeon">Thoracic Surgeon</option>
+            <option value="Transplant Surgeon">Transplant Surgeon</option>
+            <option value="Urologist">Urologist</option>
+            <option value="Vascular Surgeon">Vascular Surgeon</option>
+            <option value="Veterinarian">Veterinarian</option>
+            <option value="Wound Care Specialist">Wound Care Specialist</option>
+            <option value="Ayurvedic Doctor">Ayurvedic Doctor</option>
+            <option value="Unani Practitioner">Unani Practitioner</option>
+            <option value="Naturopathic Doctor">Naturopathic Doctor</option>
+            <option value="Sexologist">Sexologist</option>
+        </select>
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="form-group col-md-12">
+            <label><b>Address</b></label>
+        <textarea name="address" class="form-control" rows="2" required></textarea>
+        </div>
+    </div>
+    
+        <input type="submit" value="Create Account" class="button mt-2">
+    <p class="text-center mt-3">
+        Already have an account? <a href="{% url 'doctor_login' %}">Login here</a>
+      </p>
+    </form>
+
+</div>
+</div>
+<br><br>
+
+{% comment %} Function For Comparing Create password and Confirm password {% endcomment %}
+<script>
+function checkpass(){
+    if (document.patient_signup.password1.value!= document.patient_signup.password2.value) {
+        alert("Passwords does'nt match");
+        document.patient_signup.password2.focus();
+        return false;
+    }
+    else{
+        return true;
+    }
+}
+</script>
+{% if error == "no" %}
+<script>
+    alert("Your account has been created Successfully");
+    window.location = ('{% url "doctor_login" %}')
+</script>
+{% elif error == "not" %}
+<script>
+    alert("Your account is already registered with us...");
+</script>
+{% elif error == "yes" %}
+<script>
+    alert("Something went wrong, Try Again....");
+</script>
+
+{% endif %}
+{% endblock %}

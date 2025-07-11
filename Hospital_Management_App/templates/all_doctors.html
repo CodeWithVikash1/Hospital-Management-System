@@ -1,0 +1,66 @@
+{% extends 'admin_navigation.html' %}
+{% load static %}
+
+{% block title %}All Doctors - NovaCure Hospital{% endblock %}
+
+
+{% block body %}
+<div class="page-header-box">
+  <h2 class="page-header-text">
+    View All Doctors
+  </h2>
+</div>
+<div class="container"> 
+    <div class="table-responsive">
+    <table class="table table-bordered table-hover" id="example">
+      <thead class="thead-light">
+        <tr>
+          <th>Sr No.</th>
+          <th>Doctor Name</th>
+          <th>Email</th>
+          <th>Gender</th>
+          <th>Contact</th>
+          <th>Specialization</th>
+          <th>Status</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for doctor in doctors %}
+        <tr>
+          <td>{{ forloop.counter }}</td>
+          <td>Dr. {{ doctor.user.first_name }} {{ doctor.user.last_name }}</td>
+          <td>{{ doctor.user.username }}</td>
+          <td>{{ doctor.gender }}</td>
+          <td>{{ doctor.contact }}</td>
+          <td>{{ doctor.specialization }}</td>
+          <td><span class="badge badge-warning">{{ doctor.status }}</span></td>
+          <td>
+            {% if doctor.status == "Pending" %}
+                <a href="{% url 'approve_doctor' doctor.id %}" class="btn btn-success btn-sm">Approve</a>
+                <a href="{% url 'reject_doctor' doctor.id %}" class="btn btn-danger btn-sm">Reject</a>
+            {% elif doctor.status == "Approved" %}
+                <a href="{% url 'reject_doctor' doctor.id %}" class="btn btn-danger btn-sm">Dismiss</a>
+            {% elif doctor.status == "Rejected" %}
+                <a href="{% url 'approve_doctor' doctor.id %}" class="btn btn-success btn-sm">Reconsider</a>
+                <a href="{% url 'delete_doctor' doctor.id %}" class="btn btn-dark btn-sm">Delete</a>
+            {% endif %}
+        </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+
+{% if error == "no" %}
+<script>
+    alert("Your status has been Approved Successfully");
+    window.location = ('{% url "pending_doctors" %}')
+</script>
+{% elif error == "yes" %}
+<script>
+    alert("Something went wrong, Try Again....");
+</script>
+{% endif %}
+{% endblock %}

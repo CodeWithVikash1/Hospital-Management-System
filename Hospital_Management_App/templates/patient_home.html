@@ -1,0 +1,61 @@
+{% extends 'patient_navigation.html' %}
+{% load static %}
+
+{% block title %}Patient Dashboard - NovaCure Hospital{% endblock %}
+
+{% block body %}
+<div class="page-header-box">
+  <h2 class="page-header-text">
+    Welcome, {{request.user.first_name}}
+  </h2>
+</div>
+
+<div class="container mt-4">
+  <div class="row justify-content-center">
+
+    <!-- Book Appointment -->
+    <div class="col-md-4 mb-4">
+      <div class="card shadow border-primary" style="border-radius: 15px;">
+        <div class="card-body text-center">
+          <i class="fa fa-calendar-check fa-3x text-primary mb-3"></i>
+          <h5 class="card-title">Book Appointment</h5>
+          <p class="card-text">Schedule a new appointment with a specialist.</p>
+          <a href="{% url 'book_appointment' %}" class="btn btn-outline-primary btn-sm">Book Now</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- My Appointments -->
+    <div class="col-md-4 mb-4">
+      <div class="card shadow border-success" style="border-radius: 15px;">
+        <div class="card-body text-center">
+          <i class="fa fa-list fa-3x text-success mb-3"></i>
+          <h5 class="card-title">My Appointments</h5>
+          <p class="card-text">View your upcoming and past appointments.</p>
+          <a href="{% url 'my_appointments' %}" class="btn btn-outline-success btn-sm">View</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- View Profile -->
+    <div class="col-md-4 mb-4">
+      <div class="card shadow border-info" style="border-radius: 15px;">
+        <div class="card-body text-center">
+          <i class="fa fa-user-circle fa-3x text-info mb-3"></i>
+          <h5 class="card-title">My Profile</h5>
+          <p class="card-text">View or edit your personal profile information.</p>
+          <a href="{% url 'patient_view_profile' %}" class="btn btn-outline-info btn-sm">Profile</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+<div class="container mt-5 text-center text-primary">
+  <hr>
+  <p style="font-style: italic;">
+    "At <strong>NovaCure Hospital</strong>, your health is our highest priority. We're here to care, support, and heal."
+  </p>
+</div>
+
+{% endblock %}

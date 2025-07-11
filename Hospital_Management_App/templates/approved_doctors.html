@@ -1,0 +1,49 @@
+{% extends 'admin_navigation.html' %}
+{% load static %}
+
+{% block title %}Approved Doctors - NovaCure Hospital{% endblock %}
+
+
+{% block body %}
+<div class="page-header-box">
+  <h2 class="page-header-text">
+    Approved Doctors
+  </h2>
+</div>
+<div class="container"> 
+    <div class="table-responsive">
+    <table class="table table-bordered table-hover" id="example">
+      <thead class="thead-light">
+        <tr>
+          <th>Sr No.</th>
+          <th>Doctor Name</th>
+          <th>Email</th>
+          <th>Gender</th>
+          <th>Contact</th>
+          <th>Specialization</th>
+          <th>Status</th>
+          <th>Update Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for doctor in doctors %}
+        <tr>
+          <td>{{ forloop.counter }}</td>
+          <td>Dr. {{ doctor.user.first_name }} {{ doctor.user.last_name }}</td>
+          <td>{{ doctor.user.username }}</td>
+          <td>{{ doctor.gender }}</td>
+          <td>{{ doctor.contact }}</td>
+          <td>{{ doctor.specialization }}</td>
+          <td><span class="badge badge-warning">{{ doctor.status }}</span></td>
+          <td>
+            <a href="{% url 'reject_doctor' doctor.id %}" class="btn btn-sm btn-danger">Dismiss</a>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+{% endblock %}

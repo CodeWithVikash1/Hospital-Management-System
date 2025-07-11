@@ -1,0 +1,56 @@
+{% extends 'doctor_navigation.html' %}
+{% load static %}
+
+{% block title %}All Appointments - NovaCure Hospital{% endblock %}
+
+
+{% block body %}
+<div class="page-header-box">
+  <h2 class="page-header-text">
+    View All Appointments
+  </h2>
+</div>
+<div class="container"> 
+    <div class="table-responsive">
+    <table class="table table-bordered table-hover" id="example">
+      <thead class="thead-light">
+        <tr>
+          <th>Sr No.</th>
+          <th>Patient Name</th>
+          <th>Contact</th>
+          <th>Gender</th>
+          <th>Date</th>
+          <th>Time</th>
+          <th>Description</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for appt in appointments %}
+        <tr>
+        <td>{{ forloop.counter }}</td>
+        <td>{{ appt.patient.user.first_name }} {{ appt.patient.user.last_name }}</td>
+        <td>{{ appt.patient.contact }}</td>
+        <td>{{ appt.patient.gender }}</td>
+        <td>{{ appt.date }}</td>
+        <td>{{ appt.time }}</td>
+        <td>{{ appt.description }}</td>
+        <td>
+            {% if appt.status == "Pending" %}
+        <span class="badge badge-warning">{{ appt.status }}</span>
+        {% elif appt.status == "Approved" %}
+            <span class="badge badge-success">{{ appt.status }}</span>
+        {% elif appt.status == "Rejected" or appt.status == "Declined" %}
+            <span class="badge badge-danger">{{ appt.status }}</span>
+        {% elif appt.status == "Completed" %}
+            <span class="badge badge-primary">{{ appt.status }}</span>
+        {% endif %}
+        </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+
+{% endblock %}

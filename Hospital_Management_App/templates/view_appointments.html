@@ -1,0 +1,52 @@
+{% extends 'admin_navigation.html' %}
+{% load static %}
+
+{% block title %}View Appointments - NovaCure Hospital{% endblock %}
+
+{% block body %}
+<div class="page-header-box">
+  <h2 class="page-header-text">
+    View All Appointments
+  </h2>
+</div>
+
+<div class="container mt-5">
+  <div class="table-responsive shadow p-3" >
+    <table class="table table-bordered text-center table-hover" id="example">
+      <thead class="bg-info text-white">
+        <tr>
+          <th>Sr No.</th>
+          <th>Patient Name</th>
+          <th>Doctor Name</th>
+          <th>Date</th>
+          <th>Time</th>
+          <th>Description</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for a in appointments %}
+        <tr>
+          <td>{{ forloop.counter }}</td>
+          <td>{{ a.patient.user.first_name }} {{ a.patient.user.last_name }}</td>
+          <td>{{ a.doctor.user.first_name }} {{ a.doctor.user.last_name }}</td>
+          <td>{{ a.date }}</td>
+          <td>{{ a.time }}</td>
+          <td>{{ a.description }}</td>
+          <td>
+            {% if a.status == "Pending" %}
+              <span class="badge badge-warning">{{ a.status }}</span>
+            {% elif a.status == "Completed" %}
+              <span class="badge badge-success">{{ a.status }}</span>
+            {% else %}
+              <span class="badge badge-secondary">{{ a.status }}</span>
+            {% endif %}
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+<br><br>
+{% endblock %}

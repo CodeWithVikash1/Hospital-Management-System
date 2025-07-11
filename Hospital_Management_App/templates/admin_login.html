@@ -1,0 +1,45 @@
+{% extends 'navigation.html' %}
+{% load static %}
+
+{% block title %}Admin Login - NovaCure Hospital{% endblock %}
+
+
+{% block body %}
+<div class="page-header-box">
+  <h2 class="page-header-text">
+    Admin Login
+  </h2>
+</div>
+
+<div class="d-flex justify-content-center align-items-center" style="min-height: 40vh;">
+    <div class="p-4 shadow" style= "border-radius: 15px; background-color: #f7f9fb; width: 100%; max-width: 400px; ">
+
+    <form method="post">
+        {% csrf_token %}
+        <label><b>Username</b></label>
+        <input type="text" name="username" class="form-control" required>
+        <label><b>Password</b></label>
+        <input type="password" name="password" class="form-control" required>
+
+        <input type="submit" value="Login" class="button mt-3">
+    </form>
+</div>
+</div>
+
+
+{% if error == "no" %}
+<script>
+    alert("Your account has been logged in Successfully");
+    window.location = "{% url 'admin_home' %}"
+</script>
+{% endif %}
+{% if error == "yes" %}
+<script>
+    alert("Invalid Login Credentials, Try Again !");
+</script>
+{% endif %}
+
+
+
+
+{% endblock %}

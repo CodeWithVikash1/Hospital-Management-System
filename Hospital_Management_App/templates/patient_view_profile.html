@@ -1,0 +1,51 @@
+{% extends 'patient_navigation.html' %}
+{% load static %}
+
+{% block title %}My Profile - NovaCure Hospital{% endblock %}
+
+
+{% block body %}
+<div class="page-header-box">
+  <h2 class="page-header-text">
+    View My Profile
+  </h2>
+</div>
+
+
+<div class="container d-flex justify-content-center align-items-center" style="min-height: 60vh;">
+  <div class="shadow p-5" style="width: 100%; max-width: 650px; border-radius: 20px;">
+    <h4 class="mb-4 text-center text-dark font-weight-bold"><i class="fa fa-user-circle mr-2"></i>Patient Details</h4>
+
+    <div class="mb-3">
+      <i class="fa fa-user mr-2 text-secondary"></i>
+      <strong>Full Name:</strong> {{ request.user.first_name }} {{ request.user.last_name }}
+    </div>
+
+    <div class="mb-3">
+      <i class="fa fa-envelope mr-2 text-secondary"></i>
+      <strong>Email:</strong> {{ request.user.username }}
+    </div>
+
+    <div class="mb-3">
+      <i class="fa fa-phone mr-2 text-secondary"></i>
+      <strong>Contact:</strong> {{ patient.contact }}
+    </div>
+
+    <div class="mb-3">
+      <i class="fa fa-venus-mars mr-2 text-secondary"></i>
+      <strong>Gender:</strong> {{ patient.gender }}
+    </div>
+
+    <div class="mb-3">
+      <i class="fa fa-map-marker-alt mr-2 text-secondary"></i>
+      <strong>Address:</strong> {{ patient.address }}
+    </div>
+
+    <div class="text-center mt-4">
+      <a href="{% url 'patient_edit_profile' %}" class="button px-4">
+        <i class="fa fa-edit mr-1"></i> Edit Profile
+      </a>
+    </div>
+  </div>
+</div>
+{% endblock %}

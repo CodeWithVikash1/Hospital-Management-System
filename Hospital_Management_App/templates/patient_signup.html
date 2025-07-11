@@ -1,0 +1,112 @@
+{% extends 'navigation.html' %}
+{% load static %}
+
+{% block title %}Patient Signup - NovaCure Hospital{% endblock %}
+
+
+{% block body %}
+<div class="page-header-box">
+  <h2 class="page-header-text">
+    Create an Account Patient
+  </h2>
+</div>
+<div class="d-flex justify-content-center align-items-center" style="min-height: 30vh;">
+    <div class="p-4 shadow" style= "border-radius: 15px; background-color: #f7f9fb; width: 100%; max-width: 800px; ">
+    <form method="post" onsubmit="return checkpass();" name="patient_signup">
+        {% csrf_token %}
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label><b>First Name</b></label>
+            <input type="text" name="fname" class="form-control" placeholder="Enter first name" required>
+        </div>
+        <div class="form-group col-md-6">
+            <label><b>Last Name</b></label>
+            <input type="text" name="lname" class="form-control" placeholder="Enter last name" required>
+        </div>
+    </div>
+  
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label><b>Age</b></label>
+            <input type="text" name="age" class="form-control" placeholder="Enter your age" required>
+        </div>
+        <div class="form-group col-md-6">
+            <label><b>Contact Number</b></label>
+            <input type="text" name="contact" class="form-control" placeholder="Enter contact number" required>
+        </div>
+    </div>
+      <div class="form-row">
+        <div class="form-group col-md-12">
+            <label><b>Email Address</b></label>
+            <input type="Email" name="email" class="form-control" placeholder="Enter email address" required>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label><b>Create Password</b></label>
+            <input type="password" name="password1" class="form-control" placeholder="Create Password" required>
+        </div>
+        <div class="form-group col-md-6">
+            <label><b>Confirm Password</b></label>
+            <input type="password" name="password2" class="form-control" placeholder="Confirm Password" required>
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="form-group col-md-12">
+            <label><b>Gender</b></label>
+        <select name="gender" class="form-control" required>
+            <option value="" disabled selected>Select Gender</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Other">Other</option>
+        </select>
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="form-group col-md-12">
+            <label><b>Address</b></label>
+        <textarea name="address" class="form-control" rows="2" required></textarea>
+        </div>
+    </div>
+    
+        <input type="submit" value="Create Account" class="button mt-2">
+    <p class="text-center mt-3">
+        Already have an account? <a href="{% url 'patient_login' %}">Login here</a>
+      </p>
+    </form>
+
+</div>
+</div>
+<br><br>
+
+{% comment %} Function For Comparing Create password and Confirm password {% endcomment %}
+<script>
+function checkpass(){
+    if (document.patient_signup.password1.value!= document.patient_signup.password2.value) {
+        alert("Passwords does'nt match");
+        document.patient_signup.password2.focus();
+        return false;
+    }
+    else{
+        return true;
+    }
+}
+</script>
+{% if error == "no" %}
+<script>
+    alert("Your account has been created Successfully");
+    window.location = ('{% url "patient_login" %}')
+</script>
+{% elif error == "not" %}
+<script>
+    alert("Your account is already registered with us...");
+</script>
+{% elif error == "yes" %}
+<script>
+    alert("Something went wrong, Try Again....");
+</script>
+
+{% endif %}
+{% endblock %}

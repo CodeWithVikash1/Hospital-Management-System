@@ -1,0 +1,67 @@
+{% extends 'doctor_navigation.html' %}
+{% load static %}
+
+{% block title %}Pending Appointments - NovaCure Hospital{% endblock %}
+
+
+{% block body %}
+<div class="page-header-box">
+  <h2 class="page-header-text">
+    Pending Appointments
+  </h2>
+</div>
+<div class="container"> 
+    <div class="table-responsive">
+    <table class="table table-bordered table-hover" id="example">
+      <thead class="thead-light">
+        <tr>
+          <th>Sr No.</th>
+          <th>Patient Name</th>
+          <th>Contact</th>
+          <th>Gender</th>
+          <th>Date</th>
+          <th>Time</th>
+          <th>Description</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for appt in appointments %}
+        <tr>
+        <td>{{ forloop.counter }}</td>
+        <td>{{ appt.patient.user.first_name }} {{ appt.patient.user.last_name }}</td>
+        <td>{{ appt.patient.contact }}</td>
+        <td>{{ appt.patient.gender }}</td>
+        <td>{{ appt.date }}</td>
+        <td>{{ appt.time }}</td>
+        <td>{{ appt.description }}</td>
+        <td><span class="badge badge-warning">{{ appt.status }}</span></td>
+        <td>
+                <a href="{% url 'approve_appointment' appt.id %}" class="btn btn-sm btn-success">
+                <i class="fa fa-check"></i> Approve
+            </a>
+            <a href="{% url 'decline_appointment' appt.id %}" class="btn btn-sm btn-danger ml-1">
+                <i class="fa fa-times"></i> Decline
+            </a>
+            </td>
+
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+
+{% if error == "no" %}
+<script>
+    alert(" Status has been changed Successfully");
+    window.location = ('{% url "all_appointments" %}')
+</script>
+{% endif %}
+{% if error == "yes" %}
+<script>
+    alert("Something went wrong, Try Again....");
+</script>
+{% endif %}
+{% endblock %}

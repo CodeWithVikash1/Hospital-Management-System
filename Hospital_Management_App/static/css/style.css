@@ -1,0 +1,101 @@
+.nav-link:hover {
+    background-color: #6e93ba;
+    border-radius: 10px;
+    transform: translateY(-3px);
+
+}
+
+.image-container {
+  position: relative;
+}
+.image-text {
+position: absolute;
+top: 55%;
+left: 50%;
+transform: translate(-50%, -50%);
+background-color: rgba(255, 255, 255, 0.20);  /* light semi-transparent */
+color: #002244;  /* dark blue text */
+padding: 20px 40px;
+border-radius: 15px;
+font-size: 75px;
+font-weight: bold;
+text-align: center;
+font-family: 'Monotype Corsiva';
+box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 768px) {
+  .image-container img {
+    height: 350px;
+  }
+
+  .image-text {
+    font-size: 28px;
+    padding: 8px 15px;
+  }
+}
+
+
+
+.card {
+transition: transform 0.3s ease, box-shadow 0.3s ease;
+border-radius: 10px;
+border: none;
+}
+
+.card:hover {
+transform: translateY(-12px);
+box-shadow: 0 6px 20px rgba(126, 176, 230, 0.2);
+background-color: #e6f3ff;
+}
+
+.button {
+  background: linear-gradient(90deg, #2193b0, #6dd5ed);
+  color: white;
+  padding: 10px 23px;
+  border: none;
+  border-radius:15px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: background 0.4s ease, transform 0.2s ease;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.button:hover {
+  background: linear-gradient(90deg, #6dd5ed, #2193b0); /* reversed gradient */
+  transform: translateY(-2px) scale(1.02);
+  color: white;
+  text-decoration: none;
+}
+
+
+
+  .page-header-box {
+    background-color: #ffffff;
+    width: 100%;
+    padding: 20px 10px;
+    text-align: center;
+  }
+
+  .page-header-text {
+    font-family: 'Monotype Corsiva', cursive;
+    color: #003366;
+    text-shadow: 2px 2px 4px #87ceeb;
+    font-size: 58px;
+  }
+
+  @media (max-width: 768px) {
+    .page-header-text {
+      font-size: 35px;
+    }
+    .page-header-box {
+      padding: 15px 5px;
+    }
+  }
+
+.mydiv:hover{
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    transform: translateY(-20px);
+}

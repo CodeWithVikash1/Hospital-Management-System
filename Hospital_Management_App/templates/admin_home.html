@@ -1,0 +1,85 @@
+{% extends 'admin_navigation.html' %}
+{% load static %}
+
+{% block title %}Admin Dashboard - NovaCure Hospital{% endblock %}
+
+{% block body %}
+
+<div class="page-header-box">
+  <h2 class="page-header-text">
+    Admin Dashboard
+  </h2>
+</div>
+<div class="container mt-4">
+  <div class="row text-white">
+    <div class="col-md-3">
+      <div class="card bg-primary shadow">
+        <div class="card-body">
+          <h5>Total Doctors</h5>
+          <h3>{{ total_doctors }}</h3>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card bg-success shadow">
+        <div class="card-body">
+          <h5>Approved Doctors</h5>
+          <h3>{{ approved_doctors }}</h3>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card bg-info shadow">
+        <div class="card-body">
+          <h5>Total Patients</h5>
+          <h3>{{ total_patients }}</h3>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card bg-warning shadow">
+        <div class="card-body">
+          <h5>Appointments</h5>
+          <h3>{{ total_appointments }}</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+<br>
+  <hr class="my-4">
+<br>
+<div class="row text-center mt-5">
+  <div class="col-md-4">
+    <div class="card shadow">
+      <div class="card-body">
+        <i class="fas fa-user-md fa-3x text-primary mb-3"></i>
+        <h5 class="card-title">Manage Doctors</h5>
+        <a href="{% url 'all_doctors' %}" class="btn btn-outline-primary mt-2">View</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <div class="card shadow">
+      <div class="card-body">
+        <i class="fas fa-procedures fa-3x text-info mb-3"></i>
+        <h5 class="card-title">Manage Patients</h5>
+        <a href="{% url 'view_patients' %}" class="btn btn-outline-info mt-2">View</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <div class="card shadow">
+      <div class="card-body">
+        <i class="fas fa-calendar-check fa-3x text-success mb-3"></i>
+        <h5 class="card-title">View Appointments</h5>
+        <a href="{% url 'view_appointments' %}" class="btn btn-outline-success mt-2">View</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+{% endblock %}
